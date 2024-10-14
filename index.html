@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tải Xuống Ứng Dụng</title>
+    <style>
+        /* Reset một số kiểu mặc định */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            min-height: 100%; /* Thay thế height: 100% để cho phép mở rộng */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 50px 20px;
+            margin: 0;
+        }
+
+        .container {
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung và hình ảnh */
+            flex-direction: column; /* Chuyển sang cột để dễ quản lý thêm hình ảnh bên dưới */
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            gap: 40px; /* Khoảng cách giữa các phần */
+        }
+
+        .top-section {
+            display: flex; /* Chia bố cục thành ba cột: trái, giữa, phải */
+            gap: 40px; /* Khoảng cách giữa các cột */
+        }
+
+        .image-container-left,
+        .image-container-right {
+            display: flex; /* Sử dụng flexbox để sắp xếp các hình ảnh */
+            flex-direction: column; /* Sắp xếp theo chiều dọc */
+            align-items: center; /* Căn giữa các hình ảnh trong cột */
+            flex: 1; /* Chiếm cùng không gian */
+        }
+
+        /* Wrapper cho hình ảnh để thêm nhãn */
+        .image-wrapper {
+            position: relative; /* Để nhãn có thể được định vị tuyệt đối trong wrapper */
+            display: inline-block; /* Đảm bảo wrapper chỉ chiếm không gian của hình ảnh */
+            margin-bottom: 20px; /* Khoảng cách dưới mỗi hình ảnh */
+        }
+
+        /* Style cho hình ảnh */
+        .image-container-left img,
+        .image-container-right img {
+            width: 150px; /* Kích thước hình ảnh */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .image-container-left img:hover,
+        .image-container-right img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style cho nhãn */
+        .label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .content {
+            flex: 1.5; /* Chiếm không gian nhiều hơn so với các cột hình ảnh */
+            text-align: center; /* Căn giữa nội dung */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Căn giữa theo chiều dọc */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center; /* Căn giữa các nút */
+            flex-wrap: wrap; /* Cho phép các nút xuống dòng trên thiết bị nhỏ */
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .buttons a:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style cho hình ảnh bên dưới nội dung */
+        .image-container-bottom {
+            display: flex;
+            justify-content: center; /* Căn giữa hình ảnh */
+            gap: 20px; /* Khoảng cách giữa các hình ảnh */
+            flex-wrap: wrap; /* Cho phép các hình ảnh xuống dòng trên thiết bị nhỏ */
+        }
+
+        .image-container-bottom .image-wrapper {
+            margin-bottom: 20px; /* Khoảng cách dưới mỗi hình ảnh */
+        }
+
+        .image-container-bottom img {
+            width: 150px; /* Kích thước hình ảnh */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .image-container-bottom img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style cho hình ảnh lớn dưới nội dung */
+        .large-image {
+            display: flex;
+            justify-content: center; /* Căn giữa hình ảnh */
+            margin-top: 40px; /* Khoảng cách trên */
+        }
+
+        .large-image img {
+            width: 100%; /* Chiếm toàn bộ chiều rộng của container */
+            max-width: 800px; /* Giới hạn chiều rộng tối đa */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .large-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .top-section {
+                flex-direction: column; /* Chuyển sang bố cục dọc trên màn hình nhỏ */
+                align-items: center;
+            }
+
+            .image-container-left,
+            .image-container-right,
+            .content {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding-top: 0;
+            }
+
+            .large-image img {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-container-left img,
+            .image-container-right img,
+            .image-container-bottom img {
+                width: 120px; /* Kích thước hình ảnh trên thiết bị nhỏ */
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .buttons a {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .large-image img {
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container-left img,
+            .image-container-right img,
+            .image-container-bottom img {
+                width: 100px; /* Kích thước hình ảnh trên thiết bị nhỏ hơn */
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .buttons a {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .large-image img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Phần trên: Hình ảnh bên trái, nội dung giữa, hình ảnh bên phải -->
+        <div class="top-section">
+            <!-- Hình ảnh bên trái -->
+            <div class="image-container-left">
+                <!-- Hình ảnh 1 với nhãn Bước 1 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/UHepVes.jpg" alt="Hình ảnh 1">
+                    <span class="label">Bước 1</span>
+                </div>
+                <!-- Hình ảnh 2 với nhãn Bước 2 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/zaPdawG.jpg" alt="Hình ảnh 2">
+                    <span class="label">Bước 2</span>
+                </div>
+                <!-- Hình ảnh 3 với nhãn Bước 3 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/6rKhZfI.jpg" alt="Hình ảnh 3">
+                    <span class="label">Bước 3</span>
+                </div>
+                <!-- Hình ảnh 4 với nhãn Bước 4 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/vUxYRd0.jpg" alt="Hình ảnh 4">
+                    <span class="label">Bước 4</span>
+                </div>
+            </div>
+
+            <!-- Nội dung tải xuống ở giữa -->
+            <div class="content">
+                <h1>Tải Xuống Thư Mục Của Tôi</h1>
+                <p>Nhấn vào liên kết bên dưới để tải xuống thư mục đã nén của tôi.</p>
+                
+                <div class="buttons">
+                    <a href="Images.zip" download>Tải Xuống Images.zip</a>
+                    <a href="pool.exe" download>Tải Xuống pool.exe</a>
+                </div>
+            </div>
+
+            <!-- Hình ảnh bên phải -->
+            <div class="image-container-right">
+                <!-- Hình ảnh 5 với nhãn Bước 5 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/UXawER6.jpg" alt="Hình ảnh 5">
+                    <span class="label">Bước 5</span>
+                </div>
+                <!-- Hình ảnh 6 với nhãn Bước 6 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/EgXv4MC.jpg" alt="Hình ảnh 6">
+                    <span class="label">Bước 6</span>
+                </div>
+                <!-- Hình ảnh 7 với nhãn Bước 7 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/XUE03Af.jpg" alt="Hình ảnh 7">
+                    <span class="label">Bước 7</span>
+                </div>
+                <!-- Hình ảnh 8 với nhãn Bước 8 -->
+                <div class="image-wrapper">
+                    <img src="https://i.imgur.com/wKxFXen.jpg" alt="Hình ảnh 8">
+                    <span class="label">Bước 8</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phần dưới: Hình ảnh bên dưới nội dung -->
+        <div class="image-container-bottom">
+            <!-- Hình ảnh 9 với nhãn Bước 9 -->
+            <div class="image-wrapper">
+                <img src="https://i.imgur.com/wKxFXen.jpg" alt="Hình ảnh 9">
+                <span class="label">Bước 9</span>
+            </div>
+            <!-- Hình ảnh 10 với nhãn Bước 10 -->
+            <div class="image-wrapper">
+                <img src="https://i.imgur.com/wKxFXen.jpg" alt="Hình ảnh 10">
+                <span class="label">Bước 10</span>
+            </div>
+        </div>
+
+        <!-- Hình ảnh lớn sau nội dung -->
+        <div class="large-image">
+            <img src="https://i.imgur.com/RGOKeHp.jpg" alt="Background">
+        </div>
+    </div>
+
+</body>
+</html>
