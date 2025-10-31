@@ -1,12 +1,23 @@
-# Song Recommendation System using Spotify Data 
+
+---
+
+## ✅ Bản hoàn chỉnh sau khi sửa:
+
+```markdown
+# 🎧 Song Recommendation System using Spotify Data 
 A data-driven **Song Recommendation System** that predicts and recommends similar tracks based on audio features, genre, and popularity — powered by **Python, SQL, and Machine Learning**.
 
-# Tech Stack 
+---
+
+## ⚙️ Tech Stack 
 |Category| Tools / Libraries|
 |--------|-----------------|
-|DATA SOUCES| Spotify API, Selenium, MusicBrainAPI|
-|DATA BASE  | SQL Sever (via pydbc)|
-|VISUALIZE  | Matplotlib\ SearnBorn|
+|DATA SOURCES| Spotify API, Selenium, MusicBrainz API|
+|DATABASE| SQL Server (via pyodbc)|
+|VISUALIZATION| Matplotlib, Seaborn|
+
+---
+
 ## 🧱 3. Data Pipeline
 
 ```mermaid
@@ -16,4 +27,7 @@ B --> C[SQL Storage]
 C --> D[Feature Engineering]
 D --> E[Model Training]
 E --> F[Recommendation Output]
- ![image alt] (https://github.com/hungdata/Song-Recommendation-Project/blob/447fa02d012b2f79953fa5508e44332d42452f3c/Screenshot%202025-10-31%20100448.png)
+
+
+## 4.SQL Storage
+![image alt]()
