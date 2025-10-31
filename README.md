@@ -16,4 +16,4 @@ B --> C[SQL Storage]
 C --> D[Feature Engineering]
 D --> E[Model Training]
 E --> F[Recommendation Output]
- ![image alt](https://github.com/hungdata/Song-Recommendation-Project/blob/447fa02d012b2f79953fa5508e44332d42452f3c/Screenshot%202025-10-31%20100448.png)
+ ![image alt] (https://github.com/hungdata/Song-Recommendation-Project/blob/447fa02d012b2f79953fa5508e44332d42452f3c/Screenshot%202025-10-31%20100448.png)
