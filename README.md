@@ -30,4 +30,4 @@ E --> F[Recommendation Output]
 
 
 ## 4.SQL Storage
-![image alt]()
+![image alt](https://github.com/hungdata/Song-Recommendation-Project/blob/master/Screenshot%202025-10-31%20100448.png?raw=true)
