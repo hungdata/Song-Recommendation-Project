@@ -20,7 +20,7 @@ graph TD
 A[Web Crawling / API] --> B[SQL Storage]
 B --> C[Data Understanding]
 C --> D[Data Visualize]
-D --> E[Model Training]
+D --> E[Model Training [Regression]]
 E --> F[Recommendation Output]
 ```
 
