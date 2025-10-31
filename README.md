@@ -2,10 +2,11 @@
 A data-driven **Song Recommendation System** that predicts and recommends similar tracks based on audio features, genre, and popularity — powered by **Python, SQL, and Machine Learning**.
 
 # Tech stack 
-category| Tools / Libraries|
-** DATA SOUCES ** | Spotify API, Selenium, MusicBrainAPI|
-** DATA BASE ** | SQL Sever (via pydbc)|
-** VISUALIZE **| Matplotlib\ SearnBorn|
+|category| Tools / Libraries|
+|--------|-----------------|
+|** DATA SOUCES ** | Spotify API, Selenium, MusicBrainAPI|
+|** DATA BASE ** | SQL Sever (via pydbc)|
+|** VISUALIZE **| Matplotlib\ SearnBorn|
 ## 🧱 3. Data Pipeline
 
 ```mermaid
