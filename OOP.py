@@ -1,10 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from abc import ABC, abstractmethod   # ✨ Import lớp trừu tượng
+from abc import ABC, abstractmethod  
 
 
-# 🔶 Lớp cha trừu tượng
+# Lớp cha trừu tượng
 class BasePlot(ABC):
     def __init__(self, filepath):
         self.data = pd.read_csv(filepath)
